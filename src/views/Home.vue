@@ -1,50 +1,43 @@
 <template>
   <div class="home">
-    <el-container>
-      <el-header style="margin-bottom: 50px">
-        <el-row>
-          <el-col :span="8">
-            <img class="icon" :src="icon" />
-          </el-col>
-          <el-col :span="16" style="padding-right: 50px">
-            <el-menu
-              :default-active="activeIndex"
-              class="header"
-              mode="horizontal"
-              @select="handleSelect"
-              text-color="#000000"
-              active-text-color="#FA4A0C"
-            >
-              <el-menu-item index="4">Contact</el-menu-item>
-              <el-menu-item index="3">Our Mission</el-menu-item>
-              <el-menu-item index="2">Product</el-menu-item>
-              <el-menu-item index="1">Home</el-menu-item>
-            </el-menu>
-          </el-col>
-        </el-row>
-      </el-header>
-      <el-main>
-        <img class="page" :src="page1" />
-        <!-- <div class="button_container">
-          <el-button class="order_button">Order Now</el-button>
-        </div> -->
-      </el-main>
-      <el-main>
-        <img class="page" :src="page2" />
-      </el-main>
-      <el-main>
-        <img class="page" :src="page3" /> </el-main
-      ><el-main>
-        <img class="page" :src="page4" /> </el-main
-      ><el-main>
-        <img class="page" :src="page5" /> </el-main
-      ><el-main>
-        <img class="page" :src="page6" />
-      </el-main>
-      <el-main>
-        <img class="page" :src="footer" />
-      </el-main>
-    </el-container>
+    <el-header style="margin-bottom: 20px; height: 100px">
+      <div class="icon_container">
+        <img class="icon" :src="icon" />
+      </div>
+      <el-menu
+        :default-active="activeIndex"
+        class="header"
+        mode="horizontal"
+        @select="handleSelect"
+        text-color="#000000"
+        active-text-color="#FA4A0C"
+      >
+        <el-menu-item index="4">Contact</el-menu-item>
+        <el-menu-item index="3">Our Mission</el-menu-item>
+        <el-menu-item index="2">Product</el-menu-item>
+        <el-menu-item index="1">Home</el-menu-item>
+      </el-menu>
+    </el-header>
+
+    <div>
+      <img class="page" :src="page1" />
+      <div class="button_container">
+        <el-button class="order_button">Order Now</el-button>
+      </div>
+    </div>
+
+    <el-main>
+      <img class="page" :src="page2" />
+      <img class="page" :src="page3" />
+      <img class="page" :src="page4" />
+      <img class="page" :src="page5" />
+      <img class="page" :src="page6" />
+    </el-main>
+
+    <div class="footer">
+      <img class="footer" :src="footer1" />
+      <img class="footer" :src="footer2" />
+    </div>
   </div>
 </template>
 
@@ -69,7 +62,8 @@ export default {
       page4: require("/src/assets/page4.jpg"),
       page5: require("/src/assets/page5.jpg"),
       page6: require("/src/assets/page6.jpg"),
-      footer: require("/src/assets/footer.jpg"),
+      footer1: require("/src/assets/footer1.jpg"),
+      footer2: require("/src/assets/footer2.jpg"),
     };
   },
   methods: {
@@ -81,16 +75,56 @@ export default {
 </script>
 
 <style>
+.footer {
+  width: 100%;
+  height: 100%;
+}
+.button_container {
+  margin-top: -250px;
+  margin-left: 80px;
+  z-index: 9999;
+  width: 210px;
+  height: 60px;
+  padding: 0 20px;
+  position: absolute;
+}
+.order_button,
+.order_button:focus {
+  width: 100%;
+  height: 100%;
+  background: #fa4b0cec;
+  box-shadow: 0px 10px 30px rgba(183, 50, 39, 0.25);
+  border-radius: 25px;
+  border: none;
+  color: white;
+  font-family: "Montserrat", sans-serif;
+  font-weight: bold;
+  font-size: 1.27rem;
+  transition: background-color 0.3s, color 0.3s;
+}
+.order_button:hover {
+  background: #ff8b60;
+  color: white;
+}
+.icon_container {
+  float: left;
+  height: 100px;
+  display: table-cell;
+  vertical-align: middle;
+}
+.icon {
+  max-width: 100%;
+  max-height: 100%;
+  display: block;
+  margin: auto;
+  padding: 10px 0;
+  padding-left: 80px;
+}
 .header {
   font-weight: bold;
   float: right;
 }
-.icon {
-  padding: 10px 0;
-  padding-left: 80px;
-  height: 100px;
-  float: left;
-}
+
 .page {
   max-width: 100%;
   max-height: 100%;
@@ -137,6 +171,7 @@ export default {
 } */
 .el-menu-item {
   padding: 0 50px !important;
+  transition: border-color 0.3s, background-color 0.3s, color 0.3s;
 }
 
 .el-menu > .el-menu-item.is-active {
